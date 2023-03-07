@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+select{
+  background-color: transparent;
+}
+.selectCl{
+  width: 180px;
+  height: 35px;
+  border: 1px solid dimgray;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 10px;
+  background: whitesmoke;
+  cursor: pointer;
+  &:active{
+    border: 2px solid dimgray;
+  }
+  &:focus{
+    border: 2px solid dimgray;
+  }
+
+}
+
+.optionCl{
+  border: 2px solid dimgray;
+  &:checked{
+    background: gainsboro;
+  }
+  &:hover{
+    background: gainsboro;
+  }
+
+}

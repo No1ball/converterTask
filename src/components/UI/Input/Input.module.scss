@@ -1,0 +1,17 @@
+.inpClass{
+    margin: 5px;
+    padding-top:3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    border-radius: 9px;
+    border: 1px solid dimgrey;
+    cursor: pointer;
+    width: 310px;
+    height: 35px;
+    &:hover{
+        border: 2px solid dimgrey;
+     }
+    &:focus{
+        border: 2px solid dimgrey;
+    }
+}
