@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   flex-grow: 3;
-  height: 89vh;
+  height: 87vh;
   //margin-top: 100px;
   display: flex;
   flex-flow: row;
@@ -14,7 +14,7 @@
 }
 
 .firstCurrency{
-  height: 250px;
+  //height: 250px;
   width: 410px;
   display: flex;
   flex-flow: column;
@@ -22,7 +22,7 @@
   margin: 30px;
 }
 .secondCurrency{
-  height: 250px;
+ // height: 250px;
   width: 410px;
   display: flex;
   flex-flow: column;
