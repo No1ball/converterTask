@@ -4,34 +4,23 @@
     box-sizing: border-box;
   }
   flex-grow: 3;
-  height: 87vh;
-  //margin-top: 100px;
+  height: 35vh;
   display: flex;
   flex-flow: row;
-  align-items: center;
+  padding-top: 75px;
   justify-content: center;
-  //background: crimson;
 }
 
 .firstCurrency{
-  //height: 250px;
   width: 410px;
   display: flex;
   flex-flow: column;
-  justify-content: center;
   margin: 30px;
 }
 .secondCurrency{
- // height: 250px;
   width: 410px;
   display: flex;
   flex-flow: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
   margin: 30px;
-}
-
-.spanCl{
-  margin: 5px;
-  font-size: 25px;
 }

@@ -15,12 +15,7 @@ select{
   border-radius: 10px;
   background: whitesmoke;
   cursor: pointer;
-  &:active{
-    border: 2px solid dimgray;
-  }
-  &:focus{
-    border: 2px solid dimgray;
-  }
+
 
 }
 

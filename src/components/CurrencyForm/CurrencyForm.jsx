@@ -6,12 +6,12 @@ const CurrencyForm = ({placeholder, baseText, data}) => {
     return (
         <form className={classes.currencyFormCl}>
             <div className={classes.firstCurrency}>
-                <Input placeholder={placeholder} />
                 <Select data={data} baseText={baseText} />
+                <Input placeholder={placeholder} />
             </div>
             <div className={classes.secondCurrency}>
-                <span className={classes.spanCl}>100</span>
                 <Select data={data} baseText={baseText} />
+                <Input placeholder={placeholder}/>
             </div>
         </form>
     );
