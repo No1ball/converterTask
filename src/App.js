@@ -1,22 +1,20 @@
 import React from "react";
 import 'normalize.css';
-import CurrencyForm from "./components/CurrencyForm/CurrencyForm";
-import Header from "./components/UI/Header/Header";
+
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import ConverterPage from "./pages/ConverterPage";
+import CurrencyInfoPage from "./pages/CurrencyInfoPage";
+import Home from "./pages/Home";
 function App() {
   return (
-      <div className="App">
-        <Header data={['Курсы валют', 'Конвертор валют']}/>
-          <span>
-            Конвертер валют онлайн — инструмент,
-            который позволит вам рассчитать соотношения актуальных курсов денежных средств всего мира на сегодня.
-          </span>
-        <CurrencyForm
-            placeholder="Введите число"
-            baseText={'Выберите валюту'}
-            data={["ru", "usa", 'kz']}
-        />
-
-      </div>
+      <BrowserRouter>
+            <Routes>
+                <Route path={'/converter'} element={<ConverterPage/>}/>
+                <Route path={'/info'} element={<CurrencyInfoPage/>}/>
+                <Route path={'/home'} element={<Home/>} />
+                <Route path={'/*'} element={<Navigate to={'/home'} replace/>}/>
+            </Routes>
+      </BrowserRouter>
   );
 }
 
