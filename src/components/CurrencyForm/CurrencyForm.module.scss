@@ -7,8 +7,11 @@
   height: 35vh;
   display: flex;
   flex-flow: row;
-  padding-top: 75px;
   justify-content: center;
+  margin-top: 25px;
+  input:focus{
+    border: none;
+  }
 }
 
 .firstCurrency{
@@ -16,6 +19,7 @@
   display: flex;
   flex-flow: column;
   margin: 30px;
+
 }
 .secondCurrency{
   width: 410px;

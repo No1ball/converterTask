@@ -4,14 +4,21 @@
     padding-bottom: 3px;
     padding-left: 15px;
     border-radius: 9px;
-    border: 1px solid dimgrey;
+    border: none;
     cursor: pointer;
+    //height: 350px;
     width: 310px;
-    height: 350px;
+    height: 75px;
+    background: crimson;
+    font-size: 26px;
     &:hover{
-        border: 2px solid dimgrey;
+        border: none;
      }
     &:focus{
-        border: 2px solid dimgrey;
+        border: none;
+        outline: none;
+    }
+    &:active{
+        border: none;
     }
 }
