@@ -7,11 +7,12 @@ select{
   background-color: transparent;
 }
 .selectCl{
-  width: 180px;
+  width: 21px;
   height: 35px;
   border: 1px solid dimgray;
-  padding: 3px;
+  //padding: 3px;
   margin: 5px;
+
   border-radius: 10px;
   background: whitesmoke;
   cursor: pointer;
@@ -20,6 +21,7 @@ select{
 }
 
 .optionCl{
+  width: 30px;
   border: 2px solid dimgray;
   &:checked{
     background: gainsboro;

@@ -5,7 +5,7 @@ import Header from "./components/UI/Header/Header";
 function App() {
   return (
       <div className="App">
-        <Header/>
+        <Header data={['Курсы валют', 'Конвертор валют']}/>
           <span>
             Конвертер валют онлайн — инструмент,
             который позволит вам рассчитать соотношения актуальных курсов денежных средств всего мира на сегодня.

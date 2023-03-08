@@ -6,7 +6,7 @@ const Select = ({baseText, data}) => {
     return (
         <select className={newClassName}>
             <option disabled className={cl.optionCl}>
-                {baseText}
+
             </option>
             {data.map(item => <option className={cl.optionCl}>
                 {item}
