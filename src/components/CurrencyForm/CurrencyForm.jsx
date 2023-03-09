@@ -2,6 +2,7 @@ import React from 'react';
 import Select from "../UI/Select/Select";
 import classes from "./CurrencyForm.module.scss";
 import InputBlock from "../UI/InputBlock/InputBlock";
+
 const CurrencyForm = ({placeholder, baseText, data}) => {
     return (
         <form className={classes.currencyFormCl}>
