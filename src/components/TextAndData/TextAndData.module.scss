@@ -1,4 +1,5 @@
 @import "../../values.module";
+
 .mainDiv{
   flex-grow: 3;
   display: flex;
@@ -12,5 +13,4 @@
   padding-top: 12.5px;
   display: flex;
   justify-content: flex-end;
-  //align-items: flex-end;
 }

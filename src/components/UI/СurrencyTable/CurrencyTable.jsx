@@ -1,9 +1,9 @@
 import React from 'react';
-
-const CurrencyTable = () => {
+import classes from "./CurrencyTable.module.scss";
+const CurrencyTable = ({data}) => {
     return (
-        <table>
-            <thead>
+        <table className={classes.tableCl}>
+
                 <tr>
                     <td>
                         Наименование валюты
@@ -18,7 +18,19 @@ const CurrencyTable = () => {
                         Динамика за сутки
                     </td>
                 </tr>
-            </thead>
+
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
         </table>
     );
 };

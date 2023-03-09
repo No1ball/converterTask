@@ -1,0 +1,26 @@
+@import "../../../values.module";
+
+.tableCl{
+    width: 100%;
+    border-collapse: collapse;
+
+    & tr{
+        display: flex;
+        align-items: flex-end;
+        height: 38px;
+        font-size: 21px;
+        border-bottom: 1px solid $borderColor;
+    }
+    tr:first-child{
+        height: 45px;
+        font-size: 24px;
+    }
+    tr:last-child{
+        border: none;
+        padding-bottom: 3px;
+    }
+    & td{
+        width: 25%;
+        text-align: center;
+    }
+}
