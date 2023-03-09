@@ -1,18 +1,15 @@
 import React from 'react';
-import cl from './Select.module.scss'
+import classes from './Select.module.scss'
 
 const Select = ({baseText, data}) => {
-    const newClassName = cl.selectCl
-    return (
-        <select className={newClassName}>
-            <option disabled className={cl.optionCl}>
 
-            </option>
-            {data.map(item => <option className={cl.optionCl}>
-                {item}
-            </option>)
-            }
-        </select>
+    return (
+        <div className={classes.selectCl}>
+            {data.map((item, i) =>
+                <div key={i} className={classes.optionCl}> <span>{item}</span> </div>
+            )}
+            <div className={classes.lastDiv}><span>⋁</span></div>
+        </div>
     );
 };
 

@@ -1,16 +1,14 @@
+@import "../../../values.module";
+
 .inpClass{
-    margin: 5px;
+    margin-left: 1px;
     padding-top:3px;
     padding-bottom: 3px;
-    padding-left: 15px;
-    border-radius: 9px;
+    padding-left: $paddingLeftInputBlock;
     border: none;
-    cursor: pointer;
-    //height: 350px;
-    width: 310px;
-    height: 75px;
-    background: crimson;
-    font-size: 26px;
+    width: $blockWidth -2px;
+    height: 85px;
+    font-size: 35px;
     &:hover{
         border: none;
      }

@@ -1,0 +1,16 @@
+@import "../../values.module";
+.mainDiv{
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.dateDiv{
+  width: $blockWidth;
+  margin-left: $formMarginValue + $logoWidth/2;
+  margin-top: 10px;
+  padding-top: 12.5px;
+  display: flex;
+  justify-content: flex-end;
+  //align-items: flex-end;
+}

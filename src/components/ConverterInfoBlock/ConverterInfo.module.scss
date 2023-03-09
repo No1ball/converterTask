@@ -1,5 +1,7 @@
+@import "../../values.module";
+
 .convertInfoCl{
-  width: 485px;
+  width: $blockWidth;
   height: 90px;
   border-radius: 10px;
   text-align: justify;
@@ -8,7 +10,8 @@
   padding-left: 7px;
   padding-right: 7px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
-  color: gray;
+  color: dimgray;
+  margin-right: $formMarginValue + $logoWidth/2;
 }
 
 .mainDivCl{
@@ -16,6 +19,6 @@
   height: 115px;
   justify-content: center;
   align-items: center;
-  padding-right: 385px;
+  //padding-right: 474px;
   margin-top: 10px;
 }
