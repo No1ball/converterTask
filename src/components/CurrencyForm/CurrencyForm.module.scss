@@ -1,10 +1,11 @@
+@import "../../values.module";
 
 .currencyFormCl{
   &, &::before, &::after {
     box-sizing: border-box;
   }
   flex-grow: 3;
-  height: 35vh;
+  height: 29vh;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -15,16 +16,26 @@
 }
 
 .firstCurrency{
-  width: 410px;
+  width: $blockWidth;
   display: flex;
   flex-flow: column;
-  margin: 30px;
-
+  margin: $formMarginValue;
 }
 .secondCurrency{
-  width: 410px;
+  width: $blockWidth;
   display: flex;
   flex-flow: column;
   align-items: flex-end;
-  margin: 30px;
+  margin: $formMarginValue;
+}
+.logoCl{
+  width: $logoWidth;
+}
+.logoDiv{
+  display: flex;
+  align-items: center;
+  padding-top: 32px;
+  &:hover{
+    cursor: pointer;
+  }
 }

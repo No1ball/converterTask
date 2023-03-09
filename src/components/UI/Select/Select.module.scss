@@ -1,33 +1,55 @@
+@import "../../../values.module";
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-select{
-  background-color: transparent;
+@mixin spanEl{
+  span{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@mixin activeClass{
+  background: mediumseagreen;
+  color: white;
 }
 .selectCl{
-  width: 21px;
+  width: $blockWidth;
   height: 35px;
-  border: 1px solid dimgray;
-  //padding: 3px;
-  margin: 5px;
-
-  border-radius: 10px;
-  background: whitesmoke;
+  border: 1px solid $borderColor;
   cursor: pointer;
-
-
+  display: inline-flex;
+  flex-flow: row;
+  margin-bottom: 15px;
 }
 
 .optionCl{
-  width: 30px;
-  border: 2px solid dimgray;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  width: $blockWidth / 5% * 100% ;
+  border-right: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+  margin: 0;
+  text-transform: uppercase;
   &:checked{
-    background: gainsboro;
+    background: lightgray;
   }
   &:hover{
-    background: gainsboro;
+    background: whitesmoke;
   }
+  &:first-child{
+    @include activeClass
+  }
+  @include spanEl
+}
 
+.lastDiv{
+  width: $blockWidth / 10% * 100% ;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  @include spanEl
 }

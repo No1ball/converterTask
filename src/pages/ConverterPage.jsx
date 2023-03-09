@@ -3,6 +3,7 @@ import Header from "../components/UI/Header/Header";
 import CurrencyForm from "../components/CurrencyForm/CurrencyForm";
 import CurrencyInfoPage from "./CurrencyInfoPage";
 import ConverterInfo from "../components/ConverterInfoBlock/ConverterInfo";
+import TextAndData from "../components/TextAndData/TextAndData";
 
 const ConverterPage = () => {
     return (
@@ -11,9 +12,9 @@ const ConverterPage = () => {
             <CurrencyForm
                 placeholder="Введите число"
                 baseText={'Выберите валюту'}
-                data={["ru", "usa", 'kz']}
+                data={["ru", "usa", 'kz', 'eu']}
             />
-            <ConverterInfo/>
+            <TextAndData/>
         </div>
     );
 };
