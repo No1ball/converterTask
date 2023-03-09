@@ -1,7 +1,7 @@
 .navCl{
   height: 100%;
   font-size: 23px;
-  width: 650px;
+  width: 450px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -14,10 +14,4 @@
    &:active{
      text-decoration: green;
    }
-  &:visited{
-
-  }
-  &:link{
-
-  }
 }

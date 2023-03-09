@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from "../components/UI/Header/Header";
-import CurrencyTable from "../components/UI/СurrencyTable/CurrencyTable";
+import CurrencyInfoSection from "../components/CurrencyInfoSection/CurrencyInfoSection";
 
 const CurrencyInfoPage = () => {
     return (
         <div>
             <Header/>
-            <CurrencyTable/>
+            <CurrencyInfoSection/>
         </div>
     );
 };

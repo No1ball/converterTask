@@ -1,0 +1,15 @@
+@import "../../values.module";
+
+.infoSectionCl{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.tableSection{
+  //width: $blockWidth*2 + 150px;
+  width: $blockWidth*3;
+  display: flex;
+  box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}

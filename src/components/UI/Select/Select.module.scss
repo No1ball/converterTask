@@ -1,9 +1,5 @@
 @import "../../../values.module";
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 @mixin spanEl{
   span{
     width: 100%;
