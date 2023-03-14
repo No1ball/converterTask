@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {searchStrEdit} from "../../store/currencySlice";
 
 const SearchSection = ({children}) => {
-    const inpValue = useSelector(state => state.currency.searchStr)
+    const inpValue = useSelector(state => state.currency.state.searchStr)
     const dispatch = useDispatch();
 
     const inputHandler = (event) =>{

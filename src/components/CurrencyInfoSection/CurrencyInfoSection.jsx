@@ -4,8 +4,8 @@ import classes from "./CurrencyInfoSection.module.scss";
 import SearchSection from "../SearchSection/SearchSection";
 import {useSelector} from "react-redux";
 const CurrencyInfoSection = () => {
-    const data = useSelector(state => state.currency.currencyArr)
-    const searchStr = useSelector(state => state.currency.searchStr)
+    const data = useSelector(state => state.currency.data.currencyArr)
+    const searchStr = useSelector(state => state.currency.state.searchStr)
     const [filtredData, setFiltredData] = useState([...data])
 
     useEffect( ()=>{

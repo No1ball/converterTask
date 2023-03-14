@@ -1,12 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    currencyArr: [],
-    firstValuteName: '',
-    secondValiteName: '',
-    firstValuteNum: 100,
-    secondValuteNum: 0,
-    searchStr: ''
+    data:{
+        currencyArr: []
+    },
+    state:{
+        firstValuteName: '',
+        secondValuteName: '',
+        firstValuteNum: 100,
+        secondValuteNum: 0,
+        searchStr: '',
+        activePage: ''
+    }
 }
 
 const currencySlice = createSlice({
@@ -14,10 +19,10 @@ const currencySlice = createSlice({
     initialState,
     reducers: {
         initCurrency(state, action){
-            state.currencyArr.push(...action.payload);
+            state.data.currencyArr.push(...action.payload);
         },
         searchStrEdit(state, action){
-            state.searchStr = action.payload;
+            state.state.searchStr = action.payload;
         }
     },
 })
