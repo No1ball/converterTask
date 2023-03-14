@@ -5,17 +5,46 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-bottom: 55px;
+  height: 80vh;
 }
 
 .tableSection{
   //width: $blockWidth*2 + 150px;
-  width: $blockWidth*2.9;
-  box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+
+
 }
 
 .noMatches{
   font-size: 40px;
   margin-top: 45px;
+}
+
+.tableHeader{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 45px;
+  font-size: $fontSizeTableNameRow;
+  border-bottom: 1px solid $borderColor;
+}
+
+.tableCl{
+  height:  93%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.tableClAuto{
+  height: auto;
+}
+.heightAuto{
+  box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  height:  auto;
+  width: 70%;
+}
+.heightFixed{
+  box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  height: 100%;
+  width: 70%;
 }

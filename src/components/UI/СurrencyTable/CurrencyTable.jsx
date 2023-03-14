@@ -10,20 +10,6 @@ const CurrencyTable = ({filtredData}) => {
     }
     return (
         <table className={classes.tableCl}>
-            <tr>
-                <td>
-                        Наименование валюты
-                </td>
-                <td>
-                        Буквенный код
-                </td>
-                <td>
-                        Значение к рублю
-                </td>
-                <td>
-                        Динамика за сутки
-                </td>
-            </tr>
             {filtredData.map( (item,i) => <tr className={classCalc(i)} key={i}>
                 <td>{item.Name}</td>
                 <td>{item.CharCode}</td>

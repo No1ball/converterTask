@@ -3,17 +3,12 @@
 .tableCl{
     width: 100%;
     border-collapse: collapse;
-
     & tr{
         display: flex;
         align-items: flex-end;
         height: 45px;
         font-size: 20px;
         border-bottom: 1px solid $borderColor;
-    }
-    tr:first-child{
-        height: 45px;
-        font-size: $fontSizeTableNameRow;
     }
     tr:last-child{
         border: none;
@@ -43,3 +38,4 @@
 .notEven{
 
 }
+

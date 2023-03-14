@@ -11,12 +11,41 @@ const CurrencyInfoSection = () => {
     useEffect( ()=>{
         setFiltredData([...data.filter(item => item.Name.toLowerCase().startsWith(searchStr.toLowerCase()))])
     }, [searchStr, data])
+    const tableSectionCl = (len) =>{
+        if (len){
+            return  classes.heightAuto;
+        }else{
+            return  classes.heightFixed;
+        }
+    }
+    const tableCl = (len) =>{
+        if (len){
+            return  classes.tableClAuto;
+        }else{
+            return  classes.tableCl;
+        }
+    }
     return (
         <div className={classes.infoSectionCl}>
             <SearchSection>Справочник валют</SearchSection>
             {filtredData.length ?
-            <div className={classes.tableSection}>
-                <CurrencyTable filtredData={filtredData}/>
+            <div className={tableSectionCl(searchStr.length)}>
+                <div className={classes.tableHeader}><td>
+                    Наименование валюты
+                </td>
+                    <td>
+                        Буквенный код
+                    </td>
+                    <td>
+                        Значение к рублю
+                    </td>
+                    <td>
+                        Динамика за сутки
+                    </td></div>
+                    <div className={tableCl(searchStr)}>
+                        <CurrencyTable filtredData={filtredData}/>
+                    </div>
+
             </div>
             :
                 <div className={classes.noMatches}>Совпадения не найдены</div>
