@@ -15,9 +15,12 @@ const currencySlice = createSlice({
     reducers: {
         initCurrency(state, action){
             state.currencyArr.push(...action.payload);
+        },
+        searchStrEdit(state, action){
+            state.searchStr = action.payload;
         }
     },
 })
 
-export const {initCurrency} = currencySlice.actions
+export const {initCurrency, searchStrEdit} = currencySlice.actions
 export default currencySlice.reducer

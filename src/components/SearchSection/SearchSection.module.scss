@@ -1,0 +1,24 @@
+@import "../../values.module";
+.divCl{
+  width: $blockWidth*2.9;
+  display: flex;
+  justify-content: space-between;
+  margin: 3px 10px 7px 10px;
+}
+.childrenElem{
+  padding-left: 35px;
+  font-size: $fontSizeTableNameRow + 3px;
+  font-weight: bold;
+  transform: skew(-12deg);
+}
+
+.inpCl{
+  border: 1.5px solid $borderColor;
+  padding-left: 3px;
+  width: 250px;
+  border-radius: 7px;
+  &:focus{
+    border: 2px solid $borderColor;
+    outline: none;
+  }
+}

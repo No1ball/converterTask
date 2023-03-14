@@ -7,13 +7,13 @@
     & tr{
         display: flex;
         align-items: flex-end;
-        height: 51px;
-        font-size: 21px;
+        height: 45px;
+        font-size: 20px;
         border-bottom: 1px solid $borderColor;
     }
     tr:first-child{
         height: 45px;
-        font-size: 24px;
+        font-size: $fontSizeTableNameRow;
     }
     tr:last-child{
         border: none;
@@ -36,4 +36,10 @@
     margin: 5px;
     text-align: center;
     color: forestgreen;
+}
+.even{
+    background: whitesmoke;
+}
+.notEven{
+
 }

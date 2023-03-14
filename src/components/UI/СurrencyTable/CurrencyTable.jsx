@@ -1,9 +1,13 @@
 import React from 'react';
 import classes from "./CurrencyTable.module.scss";
-import {useSelector} from "react-redux";
 
-const CurrencyTable = () => {
-    const data = useSelector(state => state.currency.currencyArr)
+const CurrencyTable = ({filtredData}) => {
+    const classCalc = (i) =>{
+        if( i % 2 === 0) {
+            return classes.even
+        }
+        return classes.notEven
+    }
     return (
         <table className={classes.tableCl}>
             <tr>
@@ -20,7 +24,7 @@ const CurrencyTable = () => {
                         Динамика за сутки
                 </td>
             </tr>
-            {data.map(item => <tr>
+            {filtredData.map( (item,i) => <tr className={classCalc(i)} key={i}>
                 <td>{item.Name}</td>
                 <td>{item.CharCode}</td>
                 <td>{item.Value}</td>

@@ -1,7 +1,7 @@
 @import "../../values.module";
 
 .infoSectionCl{
-  margin-top: 47px + $formMarginValue;
+  margin-top: 10px + $formMarginValue;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -11,7 +11,11 @@
 .tableSection{
   //width: $blockWidth*2 + 150px;
   width: $blockWidth*2.9;
-  display: flex;
   box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+}
+
+.noMatches{
+  font-size: 40px;
+  margin-top: 45px;
 }
