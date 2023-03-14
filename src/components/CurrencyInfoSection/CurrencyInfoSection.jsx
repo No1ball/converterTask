@@ -4,6 +4,7 @@ import classes from "./CurrencyInfoSection.module.scss";
 const CurrencyInfoSection = () => {
     return (
         <div className={classes.infoSectionCl}>
+            <input/>
             <div className={classes.tableSection}>
                 <CurrencyTable data={[]}/>
             </div>

@@ -1,18 +1,23 @@
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    currency: [],
-    fromCurrency: '',
-    toCurrency: ''
+    currencyArr: [],
+    firstValuteName: '',
+    secondValiteName: '',
+    firstValuteNum: 100,
+    secondValuteNum: 0,
+    searchStr: ''
 }
-const currencyAdapter = createEntityAdapter();
 
 const currencySlice = createSlice({
     name: 'currency',
     initialState,
     reducers: {
-        initCurrency: currencyAdapter.addMany
+        initCurrency(state, action){
+            state.currencyArr.push(...action.payload);
+        }
     },
 })
 
-export default currencySlice
+export const {initCurrency} = currencySlice.actions
+export default currencySlice.reducer

@@ -6,6 +6,7 @@ import ConverterInfo from "../components/ConverterInfoBlock/ConverterInfo";
 import TextAndData from "../components/TextAndData/TextAndData";
 
 const ConverterPage = () => {
+
     return (
         <div>
             <Header />

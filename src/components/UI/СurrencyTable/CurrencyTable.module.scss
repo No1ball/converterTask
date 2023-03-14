@@ -7,7 +7,7 @@
     & tr{
         display: flex;
         align-items: flex-end;
-        height: 38px;
+        height: 51px;
         font-size: 21px;
         border-bottom: 1px solid $borderColor;
     }
@@ -23,4 +23,17 @@
         width: 25%;
         text-align: center;
     }
+}
+
+.negative{
+    font-size: 22px;
+    margin: 5px;
+    text-align: center;
+    color: crimson;
+}
+.positive{
+    font-size: 22px;
+    margin: 5px;
+    text-align: center;
+    color: forestgreen;
 }

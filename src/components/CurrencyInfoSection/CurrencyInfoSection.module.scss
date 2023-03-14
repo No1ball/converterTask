@@ -3,12 +3,14 @@
 .infoSectionCl{
   margin-top: 47px + $formMarginValue;
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  margin-bottom: 55px;
 }
 
 .tableSection{
   //width: $blockWidth*2 + 150px;
-  width: $blockWidth*3;
+  width: $blockWidth*2.9;
   display: flex;
   box-shadow: 0 -1px 6px 0.5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
