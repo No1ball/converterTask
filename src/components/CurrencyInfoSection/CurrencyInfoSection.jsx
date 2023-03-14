@@ -9,7 +9,7 @@ const CurrencyInfoSection = () => {
     const [filtredData, setFiltredData] = useState([...data])
 
     useEffect( ()=>{
-        setFiltredData([...data.filter(item => item.Name.toLowerCase().includes(searchStr.toLowerCase()))])
+        setFiltredData([...data.filter(item => item.Name.toLowerCase().startsWith(searchStr.toLowerCase()))])
     }, [searchStr, data])
     return (
         <div className={classes.infoSectionCl}>
