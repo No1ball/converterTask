@@ -20,7 +20,13 @@ const Navigation = ({data}) => {
     return (
         <div className={classes.navCl}>
             {data.map((item, i)=>
-                <Link to={'/' + item.href} key={i} className={linkClFunc(item.href)} onClick={changeClass(item.href)}>{item.text} </Link>
+                <Link to={'/' + item.href}
+                      key={i}
+                      className={linkClFunc(item.href)}
+                      onClick={changeClass(item.href)}
+                >
+                    {item.text}
+                </Link>
             )}
         </div>
     );

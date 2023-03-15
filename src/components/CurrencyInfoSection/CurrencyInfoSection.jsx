@@ -7,7 +7,7 @@ const CurrencyInfoSection = () => {
     const data = useSelector(state => state.currency.data.currencyArr)
     const searchStr = useSelector(state => state.currency.state.searchStr)
     const [filtredData, setFiltredData] = useState([...data])
-
+    console.log(data[0])
     useEffect( ()=>{
         setFiltredData([...data.filter(item => item.Name.toLowerCase().startsWith(searchStr.toLowerCase()))])
     }, [searchStr, data])

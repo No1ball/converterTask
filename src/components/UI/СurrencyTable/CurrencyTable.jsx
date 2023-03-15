@@ -13,7 +13,7 @@ const CurrencyTable = ({filtredData}) => {
             {filtredData.map( (item,i) => <tr className={classCalc(i)} key={i}>
                 <td>{item.Name}</td>
                 <td>{item.CharCode}</td>
-                <td>{item.Value}</td>
+                <td>{(item.Value/item.Nominal).toFixed(4)}</td>
                 {item.Value > item.Previous ?
                     <td>{(item.Value - item.Previous).toFixed(4)}
                         <span className={classes.positive}>↑</span>

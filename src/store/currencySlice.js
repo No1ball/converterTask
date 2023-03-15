@@ -8,10 +8,11 @@ const initialState = {
     state:{
         firstValuteName: '',
         secondValuteName: '',
-        firstValuteNum: 100,
-        secondValuteNum: 0,
+        valueFirst: 100,
+        valueSecond: 0,
         searchStr: '',
-        activePage: window.location.pathname
+        activePage: window.location.pathname,
+        lastValute: 'KZT'
     }
 }
 
@@ -28,8 +29,23 @@ const currencySlice = createSlice({
         changeActive(state, action){
             state.state.activePage = action.payload
         },
+        changeFirstValuteName(state, action){
+            state.state.firstValuteName = action.payload
+        },
+        changeSecondValuteName(state, action){
+            state.state.secondValuteName = action.payload
+        },
+        handleFirstValue(state, action){
+            state.state.valueFirst = action.payload
+        },
+        handleSecondValue(state, action){
+            state.state.valueSecond = action.payload
+        },
+        changeLastValute(state, action){
+            state.state.lastValute = action.payload
+        }
     },
 })
 
-export const {initCurrency, searchStrEdit, changeActive} = currencySlice.actions
+export const {initCurrency, searchStrEdit, changeActive, changeFirstValuteName, changeSecondValuteName, handleFirstValue, handleSecondValue} = currencySlice.actions
 export default currencySlice.reducer

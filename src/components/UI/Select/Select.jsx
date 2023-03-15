@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Select.module.scss'
 
-const Select = ({baseText, data}) => {
+const Select = ({data}) => {
 
     return (
         <div className={classes.selectCl}>
