@@ -1,11 +1,12 @@
 import React from 'react';
 import classes from "./InputBlock.module.scss";
-const InputText = ({firstCurrency, secondCurrency}) => {
+import Service from "../../../service";
+const InputText = ({firstCurrency, firstCourse,secondCurrency, secondCourse}) => {
 
 
     return (
         <div className={classes.textCl}>
-            1 {firstCurrency} = 1 {secondCurrency}
+            1 {firstCurrency} = {Service.convertation( 1, firstCourse, secondCourse)} {secondCurrency}
         </div>
     );
 };

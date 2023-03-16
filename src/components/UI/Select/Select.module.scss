@@ -7,9 +7,12 @@
   }
 }
 
-@mixin activeClass{
+.activeClass{
   background: mediumseagreen;
   color: white;
+  &:hover{
+    color:black;
+  }
 }
 .selectCl{
   width: $blockWidth;
@@ -35,9 +38,6 @@
   }
   &:hover{
     background: whitesmoke;
-  }
-  &:first-child{
-    @include activeClass
   }
   @include spanEl
 }

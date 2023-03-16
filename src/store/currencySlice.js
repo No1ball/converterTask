@@ -1,9 +1,18 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import FetchData from "../API/CurrencyService";
 
+export const fetchCurrency = createAsyncThunk(
+    'currency/fetchCurrency',
+    async function(){
+        const response = await FetchData.getCurrency();
+        return response.Valute
+    }
+)
 
 const initialState = {
     data:{
-        currencyArr: []
+        currencyArr: [],
+        status: ''
     },
     state:{
         firstValuteName: '',
@@ -45,6 +54,19 @@ const currencySlice = createSlice({
             state.state.lastValute = action.payload
         }
     },
+    extraReducers: (builder) => {
+        builder.addCase(fetchCurrency.pending, (state, action) =>{
+            state.data.status = 'loading'
+        })
+        builder.addCase(fetchCurrency.fulfilled, (state, action) =>{
+            state.data.status = 'resolve';
+            state.state.firstValuteName = 'RUB';
+            state.state.secondValuteName = 'USD';
+            state.state.activePage = window.location.pathname.slice(1) || 'info'
+            state.data.currencyArr = Object.values(action.payload)
+            state.data.currencyArr.push({CharCode:'RUB', Value:1, Nominal:1})
+        })
+    }
 })
 
 export const {initCurrency, searchStrEdit, changeActive, changeFirstValuteName, changeSecondValuteName, handleFirstValue, handleSecondValue} = currencySlice.actions
