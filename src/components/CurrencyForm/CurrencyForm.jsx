@@ -10,6 +10,7 @@ import {
     handleSecondValue
 } from "../../store/currencySlice";
 import Service from "../../service";
+import Modal from "../UI/Modal/Modal";
 
 const CurrencyForm = ({placeholder}) => {
     const dispatch = useDispatch()
@@ -23,6 +24,8 @@ const CurrencyForm = ({placeholder}) => {
     const secondCurrency = useSelector(state=> state.currency.state.secondValuteName)
     const firstValue = useSelector(state => state.currency.state.valueFirst)
     const secondValue = useSelector(state => state.currency.state.valueSecond)
+    const [activeF, setActiveF] = useState(false)
+    const [activeS, setActiveS] = useState(false)
     console.log(status)
     useEffect( () => {
         setData([...data, {CharCode:lastValute}])
@@ -94,40 +97,57 @@ const CurrencyForm = ({placeholder}) => {
         setSecondBlockState(false)
     }
     console.log(secondValue)
+    const selectLast = (setActive, active) => (event) =>{
+        setActive(!active)
+        console.log('CLICK SYKA')
+    }
     return (
         <form className={classes.currencyFormCl}>
-            <div className={classes.firstCurrency}>
-                <Select data={data} fullData={fullData} select={selectHandlerFirst} activeValute={firstCurrency}/>
-                <InputBlock placeholder={placeholder}
-                            onClick={firstBlockValueHandle}
-                            value={Service.calcValueForInput(
-                                firstValue,
-                                firstBlockState,
-                                Service.convertation(secondValue, secondCourse, firstCourse)
-                            )}
-                            first={firstCurrency}
-                            second={secondCurrency}
-                            firstCourse={firstCourse}
-                            secondCourse={secondCourse}
-                />
-            </div>
-            <div className={classes.logoDiv} onClick={swap}>
-                <img src={require('../../152360.png')} alt='swap' className={classes.logoCl}/>
-            </div>
-            <div className={classes.secondCurrency}>
-                <Select data={data} fullData={fullData} select={selectHandlerSecond} activeValute={secondCurrency}/>
-                <InputBlock placeholder={placeholder}
-                            onClick={secondBlockValueHandle}
-                            value={Service.calcValueForInput(
-                                secondValue,
-                                secondBlockState,
-                                Service.convertation(firstValue, firstCourse, secondCourse)
-                            )}
-                            first={secondCurrency}
-                            second={firstCurrency}
-                            firstCourse={secondCourse}
-                            secondCourse={firstCourse}
-                />
+            <div className={classes.currencyBlock}>
+                <div className={classes.firstCurrency}>
+                    <Select data={data} fullData={fullData}
+                            select={selectHandlerFirst}
+                            activeValute={firstCurrency}
+                            lastSelect={selectLast(setActiveF, activeF)}/>
+                    {activeF ?
+                        <Modal active={activeF} fullData={fullData} select={selectLast}/>
+                        :
+                        <InputBlock placeholder={placeholder}
+                                    onClick={firstBlockValueHandle}
+                                    value={Service.calcValueForInput(
+                                        firstValue,
+                                        firstBlockState,
+                                        Service.convertation(secondValue, secondCourse, firstCourse)
+                                    )}
+                                    first={firstCurrency}
+                                    second={secondCurrency}
+                                    firstCourse={firstCourse}
+                                    secondCourse={secondCourse}
+                    />}
+                </div>
+                <div className={classes.logoDiv} onClick={swap}>
+                    <img src={require('../../152360.png')} alt='swap' className={classes.logoCl}/>
+                </div>
+                <div className={classes.secondCurrency}>
+                    <Select data={data} fullData={fullData} select={selectHandlerSecond} activeValute={secondCurrency}
+                            lastSelect={selectLast(setActiveS, activeS)}/>
+                    {activeS ?
+                        <Modal active={activeS} fullData={fullData} select={selectLast}/>
+                        :
+                        <InputBlock placeholder={placeholder}
+                                    onClick={secondBlockValueHandle}
+                                    value={Service.calcValueForInput(
+                                        secondValue,
+                                        secondBlockState,
+                                        Service.convertation(firstValue, firstCourse, secondCourse)
+                                    )}
+                                    first={secondCurrency}
+                                    second={firstCurrency}
+                                    firstCourse={secondCourse}
+                                    secondCourse={firstCourse}
+                        />
+                    }
+                </div>
             </div>
         </form>
     );

@@ -1,0 +1,19 @@
+@import "../../../values.module";
+
+.modal{
+  height: 100%;
+  width: $blockWidth + 30px;
+  box-shadow: 1px -2px 6px 0.5px rgba(0, 0, 0, 0.3);
+  columns: 50px;
+  overflow: hidden;
+  overflow-x: scroll;
+  padding: 6px;
+}
+
+.content{
+  width: 30%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
