@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Select from "../UI/Select/Select";
 import classes from "./CurrencyForm.module.scss";
-import InputBlock from "../UI/InputBlock/InputBlock";
 import {useDispatch, useSelector} from "react-redux";
 import cn from 'classnames'
 import {changeFirstValuteName, changeSecondValuteName, handleFirstValue,
                                                         handleSecondValue} from "../../store/currencySlice";
 import Service from "../../service";
-import Modal from "../UI/Modal/Modal";
 import ConverterBlock from "../UI/ConverterBlock/ConverterBlock";
 
 const CurrencyForm = ({placeholder}) => {
@@ -136,32 +133,6 @@ const CurrencyForm = ({placeholder}) => {
                 firstCourse={secondCourse} secondCourse={firstCourse} firstCurrency={secondCurrency}
                                 secondCurrency={firstCurrency}
                 />
-                {/*<div className={currencyClassS}>
-                    <Select data={dataS}
-                            fullData={fullData}
-                            select={selectHandlerSecond}
-                            activeValute={secondCurrency}
-                            openModal={openModal(setActiveS, activeS)}/>
-                    {activeS ?
-                        <Modal fullData={fullData}
-                               lastSelect={lastSelect(setActiveS, activeS, changeSecondValuteName,
-                                   setDataS, dataS, lastValuteS, setLastValuteS)}
-                               />
-                        :
-                        <InputBlock placeholder={placeholder}
-                                    onClick={secondBlockValueHandle}
-                                    value={Service.calcValueForInput(
-                                        secondValue,
-                                        secondBlockState,
-                                        Service.convertation(firstValue, firstCourse, secondCourse)
-                                    )}
-                                    first={secondCurrency}
-                                    second={firstCurrency}
-                                    firstCourse={secondCourse}
-                                    secondCourse={firstCourse}
-                        />
-                    }
-                </div>*/}
             </div>
         </form>
     );
