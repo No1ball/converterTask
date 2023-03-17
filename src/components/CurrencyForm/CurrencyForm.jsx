@@ -21,21 +21,26 @@ const CurrencyForm = ({placeholder}) => {
     const lastValute = useSelector(state => state.currency.state.lastValute)
     const firstCurrency = useSelector(state => state.currency.state.firstValuteName)
     const secondCurrency = useSelector(state=> state.currency.state.secondValuteName)
+    const firstValue = useSelector(state => state.currency.state.valueFirst)
+    const secondValue = useSelector(state => state.currency.state.valueSecond)
     console.log(status)
     useEffect( () => {
         setData([...data, {CharCode:lastValute}])
     }, [])
     useEffect(()=>{
-        console.log(fullData, fullData.length, 'FDDFDFFD')
+        const firstFiltredObj = fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0]
+        const secondFiltredObj = fullData.filter(item => item.CharCode.localeCompare(secondCurrency) === 0)[0]
         if(fullData.length > 1){
             console.log(fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0].Value)
-            setFirstCourse(fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0].Value);
-            setSecondCourse(fullData.filter(item => item.CharCode.localeCompare(secondCurrency) === 0)[0].Value);
+            setFirstCourse(firstFiltredObj.Value / firstFiltredObj.Nominal);
+            setSecondCourse(secondFiltredObj.Value / secondFiltredObj.Nominal);
+            dispatch(handleSecondValue(Service.convertation(firstValue,
+                firstFiltredObj.Value / firstFiltredObj.Nominal,
+                secondFiltredObj.Value / secondFiltredObj.Nominal )))
         }
     }, [status, firstCurrency, secondCurrency])
 
-    const firstValue = useSelector(state => state.currency.state.valueFirst)
-    const secondValue = useSelector(state => state.currency.state.valueSecond)
+
     const [firstBlockState, setFirstBlockState] = useState(true)
     const [secondBlockState, setSecondBlockState] = useState(false)
 
@@ -50,6 +55,7 @@ const CurrencyForm = ({placeholder}) => {
             }else {
                 dispatch(handleFirstValue(Number(event.target.value)))
             }
+            dispatch(handleSecondValue(Service.convertation(Number(event.target.value), firstCourse, secondCourse)))
             setFirstBlockState(true)
             setSecondBlockState(false)
         }
@@ -65,6 +71,7 @@ const CurrencyForm = ({placeholder}) => {
             }else {
                 dispatch(handleSecondValue(Number(event.target.value)))
             }
+            dispatch(handleFirstValue(Service.convertation(Number(event.target.value), secondCourse, firstCourse)))
             setFirstBlockState(false)
             setSecondBlockState(true)
         }
@@ -76,6 +83,17 @@ const CurrencyForm = ({placeholder}) => {
     const selectHandlerSecond = (event) =>{
         dispatch(changeSecondValuteName(event.target.innerText))
     }
+
+    const swap = () =>{
+        let tempName = firstCurrency;
+        dispatch(changeFirstValuteName(secondCurrency));
+        dispatch(changeSecondValuteName(tempName))
+        console.log(secondValue)
+        dispatch(handleFirstValue(secondValue))
+        setFirstBlockState(true)
+        setSecondBlockState(false)
+    }
+    console.log(secondValue)
     return (
         <form className={classes.currencyFormCl}>
             <div className={classes.firstCurrency}>
@@ -93,7 +111,7 @@ const CurrencyForm = ({placeholder}) => {
                             secondCourse={secondCourse}
                 />
             </div>
-            <div className={classes.logoDiv}>
+            <div className={classes.logoDiv} onClick={swap}>
                 <img src={require('../../152360.png')} alt='swap' className={classes.logoCl}/>
             </div>
             <div className={classes.secondCurrency}>
