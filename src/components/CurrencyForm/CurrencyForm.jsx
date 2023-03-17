@@ -82,11 +82,32 @@ const CurrencyForm = ({placeholder}) => {
 
     const swap = () =>{
         let tempName = firstCurrency;
+        if(secondCurrency === lastValuteS){
+            const tempLast = lastValuteF;
+            setDataF([...dataF.filter(item => item.CharCode.localeCompare(lastValuteF) !== 0),
+                {CharCode: secondCurrency}])
+            setLastValuteF(secondCurrency)
+
+
+            if(firstCurrency === lastValuteF) {
+                setDataS([...dataS.filter(item => item.CharCode.localeCompare(lastValuteS) !== 0),
+                    {CharCode: tempLast}])
+                setLastValuteS(tempLast)
+
+            }
+
+        }else if(firstCurrency === lastValuteF){
+            setDataS([...dataS.filter(item => item.CharCode.localeCompare(lastValuteS) !== 0),
+                {CharCode: firstCurrency}])
+            setLastValuteS(firstCurrency)
+        }
         dispatch(changeFirstValuteName(secondCurrency));
         dispatch(changeSecondValuteName(tempName))
         dispatch(handleFirstValue(secondValue))
         setFirstBlockState(true)
         setSecondBlockState(false)
+        console.log(firstCurrency, lastValuteF, secondCurrency, lastValuteS)
+
     }
 
     const openModal = (setActive, active) => (event) => setActive(!active)

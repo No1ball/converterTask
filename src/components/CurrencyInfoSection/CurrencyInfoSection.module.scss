@@ -1,7 +1,7 @@
 @import "../../values.module";
 
 .infoSectionCl{
-  margin-top: 10px + $formMarginValue;
+  margin-top: 10px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -17,13 +17,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 45px;
+  height: 7vh;
   font-size: $fontSizeTableNameRow;
   border-bottom: 1px solid $borderColor;
 }
 
 .tableCl{
-  height:  93%;
+  height:  91%;
   overflow: hidden;
   overflow-y: scroll;
 }

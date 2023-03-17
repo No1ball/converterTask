@@ -5,7 +5,8 @@ import cn from 'classnames'
 const Select = ({data,activeValute, select, openModal}) => {
     const classCalc = (itemCode) =>{
         return cn(classes.optionCl, {
-            [classes.activeClass]: itemCode.localeCompare(activeValute) === 0
+            [classes.activeClass]: itemCode.localeCompare(activeValute) === 0,
+            [classes.usual]: itemCode.localeCompare(activeValute) !== 0,
         })
     }
     return (

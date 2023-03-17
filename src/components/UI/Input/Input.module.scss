@@ -8,7 +8,7 @@
     border: none;
     width: $blockWidth -2px;
     height: 85px;
-    font-size: 35px;
+    font-size: $textSize + 1vmin;
     &:hover{
         border: none;
      }

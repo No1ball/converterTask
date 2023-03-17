@@ -1,16 +1,19 @@
 @import "../../values.module";
 
 .mainDiv{
+  height: 16vh;
   flex-grow: 3;
   display: flex;
   justify-content: center;
 }
 
 .dateDiv{
+  height: 16vh;
   width: $blockWidth;
   margin-left: $formMarginValue + $logoWidth/2;
   //margin-top: 10px;
-  padding-top: 12.5px;
+  //padding-top: 2vh;
   display: flex;
   justify-content: flex-end;
+  font-size: $textSize - 0.3vmin;
 }

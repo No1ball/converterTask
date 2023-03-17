@@ -14,10 +14,11 @@
   }
 }
 .converter{
-  height: 260px;
+  height: 40vh;
 }
 .active{
-  height: 300px;
+  //height: 450px;
+  height: 47vh;
 }
 .currencyBlock{
   display: flex;
@@ -33,9 +34,9 @@
   width: $logoWidth;
 }
 .logoDiv{
+  margin-top: 3vh;
   display: flex;
   align-items: center;
-  //padding-top: 32px;
   &:hover{
     cursor: pointer;
   }

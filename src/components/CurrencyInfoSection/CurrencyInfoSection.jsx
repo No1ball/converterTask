@@ -5,14 +5,17 @@ import SearchSection from "../SearchSection/SearchSection";
 import {useSelector} from "react-redux";
 const CurrencyInfoSection = () => {
     const data = useSelector(state => state.currency.data.currencyArr)
-    console.log(data)
+    const flags = useSelector(state => state.currency.data.flags)
     const searchStr = useSelector(state => state.currency.state.searchStr)
     /*useMemo*/
     const [filtredData, setFiltredData] = useState([...data])
-    console.log(data[0])
+    const [filtredFlags, setFiltredFlags] = useState([...flags])
     /*add useMemo*/
     useEffect( ()=>{
-        setFiltredData([...data.filter(item => item.CharCode !== 'RUB' && item.Name.toLowerCase().startsWith(searchStr.toLowerCase()))])
+        setFiltredData([...data.filter(item =>
+            item.CharCode !== 'RUB' && item.Name.toLowerCase().startsWith(searchStr.toLowerCase())
+        )])
+        setFiltredFlags([...flags.filter(item => item.CharCode !== 'RUB')])
     }, [searchStr, data])
     const tableSectionCl = (len) =>{
         if (len){
@@ -46,7 +49,7 @@ const CurrencyInfoSection = () => {
                         Динамика за сутки
                     </div></div>
                     <div className={tableCl(searchStr)}>
-                        <CurrencyTable filtredData={filtredData}/>
+                        <CurrencyTable filtredData={filtredData} flags={filtredFlags}/>
                     </div>
 
             </div>

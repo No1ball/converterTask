@@ -1,19 +1,21 @@
 @import "../../../values.module";
 
 .inpBlockCl{
-  height: 140px;
+  //height: 140px;
+  height: 15vh;
   width: $blockWidth;
   border: 1px solid lightgray;
   display: flex;
   flex-flow: column;
   justify-content: center;
+  font-size: $textSize;
 }
 
 .textCl{
-  margin-top: 2px;
+  margin-top: 1.3vh;
   padding-left: $paddingLeftInputBlock;
   font-family: "Times New Roman", serif;
-  font-size: 22px;
   color: gray;
   text-transform: uppercase;
+  font-size: $textSize - 0.6vmin;
 }

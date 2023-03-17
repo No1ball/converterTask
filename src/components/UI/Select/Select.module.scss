@@ -8,44 +8,54 @@
 }
 
 .activeClass{
+  height: 100%;
   background: mediumseagreen;
   color: white;
   &:hover{
-    color:black;
+    background: mediumseagreen;
   }
 }
 .selectCl{
   width: $blockWidth;
-  height: 35px;
+  height: 4vh;
   border: 1px solid $borderColor;
   cursor: pointer;
   display: inline-flex;
   flex-flow: row;
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
+  margin-bottom: 3vh;
+  font-size: $textSize - 0.4vmin;
 }
 
 .optionCl{
-  height: 34px;
+  //height: 34px;
+  height: 4vh;
   display: flex;
   align-items: center;
   width: $blockWidth / 5% * 100% ;
   border-right: 1px solid $borderColor;
-  border-bottom: 1px solid $borderColor;
+  //border-bottom: 1px solid $borderColor;
   margin: 0;
   text-transform: uppercase;
   &:checked{
     background: lightgray;
   }
-  &:hover{
+
+  &.usual :hover{
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: whitesmoke;
   }
   @include spanEl
 }
 
 .lastDiv{
+  height: 4vh;
   width: $blockWidth / 10% * 100% ;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: $textSize - 0.7vmin;
   @include spanEl
 }

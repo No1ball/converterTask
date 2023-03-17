@@ -2,19 +2,29 @@
 
 .modal{
   height: 100%;
-  width: $blockWidth + 20px;
+  width: $blockWidth + 0.2vw;
   box-shadow: 1px -2px 6px 0.5px rgba(0, 0, 0, 0.3);
-  columns: 60px;
+  column-width: 80px;
+  column-count: 4;
+  column-fill: auto;
+  column-gap: normal;
   overflow: hidden;
-  padding: 15px;
+  column-rule: solid 1px lightgrey;
+  padding: 10px;
+  justify-content: space-around;
+  overflow-x: scroll;
 }
-
-.content{
-  width: 100%;
+.flag{
   display: flex;
-  flex-flow: row;
   align-items: center;
-  justify-content: space-between;
-  border-right: 1px solid lightgrey;
+  width: 10px;
+  height: 10px;
+}
+.content{
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   cursor: pointer;
+  font-size: $textSize - 0.3vmin;
 }
