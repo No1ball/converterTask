@@ -3,32 +3,33 @@ import Select from "../UI/Select/Select";
 import classes from "./CurrencyForm.module.scss";
 import InputBlock from "../UI/InputBlock/InputBlock";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    changeFirstValuteName,
-    changeSecondValuteName,
-    handleFirstValue,
-    handleSecondValue
-} from "../../store/currencySlice";
+import cn from 'classnames'
+import {changeFirstValuteName, changeSecondValuteName, handleFirstValue,
+                                                        handleSecondValue} from "../../store/currencySlice";
 import Service from "../../service";
 import Modal from "../UI/Modal/Modal";
+import ConverterBlock from "../UI/ConverterBlock/ConverterBlock";
 
 const CurrencyForm = ({placeholder}) => {
     const dispatch = useDispatch()
     const [firstCourse, setFirstCourse] = useState()
     const [secondCourse, setSecondCourse] = useState()
-    const [data, setData]= useState([{CharCode:"RUB"}, {CharCode:"USD"}, {CharCode:'EUR'}])
+    const [dataF, setDataF]= useState([{CharCode:"RUB"}, {CharCode:"USD"}, {CharCode:'EUR'}])
+    const [dataS, setDataS]= useState([{CharCode:"RUB"}, {CharCode:"USD"}, {CharCode:'EUR'}])
     const fullData = useSelector(state => state.currency.data.currencyArr)
     const status = useSelector(state => state.currency.data.status)
-    const lastValute = useSelector(state => state.currency.state.lastValute)
     const firstCurrency = useSelector(state => state.currency.state.firstValuteName)
     const secondCurrency = useSelector(state=> state.currency.state.secondValuteName)
     const firstValue = useSelector(state => state.currency.state.valueFirst)
     const secondValue = useSelector(state => state.currency.state.valueSecond)
     const [activeF, setActiveF] = useState(false)
     const [activeS, setActiveS] = useState(false)
+    const [lastValuteF, setLastValuteF] = useState('KZT')
+    const [lastValuteS, setLastValuteS] = useState('KZT')
     console.log(status)
     useEffect( () => {
-        setData([...data, {CharCode:lastValute}])
+        setDataF([...dataF, {CharCode:lastValuteF}])
+        setDataS([...dataS, {CharCode:lastValuteS}])
     }, [])
     useEffect(()=>{
         const firstFiltredObj = fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0]
@@ -42,7 +43,6 @@ const CurrencyForm = ({placeholder}) => {
                 secondFiltredObj.Value / secondFiltredObj.Nominal )))
         }
     }, [status, firstCurrency, secondCurrency])
-
 
     const [firstBlockState, setFirstBlockState] = useState(true)
     const [secondBlockState, setSecondBlockState] = useState(false)
@@ -80,59 +80,73 @@ const CurrencyForm = ({placeholder}) => {
         }
     }
 
-    const selectHandlerFirst = (event) =>{
-        dispatch(changeFirstValuteName(event.target.innerText))
-    }
-    const selectHandlerSecond = (event) =>{
-        dispatch(changeSecondValuteName(event.target.innerText))
-    }
+    const selectHandlerFirst = (event) => dispatch(changeFirstValuteName(event.target.innerText))
+    const selectHandlerSecond = (event) => dispatch(changeSecondValuteName(event.target.innerText))
 
     const swap = () =>{
         let tempName = firstCurrency;
         dispatch(changeFirstValuteName(secondCurrency));
         dispatch(changeSecondValuteName(tempName))
-        console.log(secondValue)
         dispatch(handleFirstValue(secondValue))
         setFirstBlockState(true)
         setSecondBlockState(false)
     }
-    console.log(secondValue)
-    const selectLast = (setActive, active) => (event) =>{
+
+    const openModal = (setActive, active) => (event) => setActive(!active)
+
+    const currencyClassF = cn(classes.currency,{
+        [classes.converter]: activeF,
+        [classes.active] : activeF
+    })
+    const currencyClassS = cn(classes.currency,{
+        [classes.converter]: activeS,
+        [classes.active] : activeS
+    })
+
+    const lastSelect = (setActive, active, func, setData, data, lastValute, setValute) => (event) =>{
+        setData([...data.filter(item => item.CharCode.localeCompare(lastValute) !== 0),
+            {CharCode: event.target.innerText}])
+        dispatch(func(event.target.innerText));
+        setValute(event.target.innerText)
         setActive(!active)
-        console.log('CLICK SYKA')
     }
     return (
         <form className={classes.currencyFormCl}>
             <div className={classes.currencyBlock}>
-                <div className={classes.firstCurrency}>
-                    <Select data={data} fullData={fullData}
-                            select={selectHandlerFirst}
-                            activeValute={firstCurrency}
-                            lastSelect={selectLast(setActiveF, activeF)}/>
-                    {activeF ?
-                        <Modal active={activeF} fullData={fullData} select={selectLast}/>
-                        :
-                        <InputBlock placeholder={placeholder}
-                                    onClick={firstBlockValueHandle}
-                                    value={Service.calcValueForInput(
-                                        firstValue,
-                                        firstBlockState,
-                                        Service.convertation(secondValue, secondCourse, firstCourse)
-                                    )}
-                                    first={firstCurrency}
-                                    second={secondCurrency}
-                                    firstCourse={firstCourse}
-                                    secondCourse={secondCourse}
-                    />}
-                </div>
+                <ConverterBlock name={currencyClassF} data={dataF} fullData={fullData}
+                                select={selectHandlerFirst} activeValute={firstCurrency}
+                                openModal={openModal(setActiveF, activeF)} active={activeF}
+                                lastSelect={lastSelect(setActiveF, activeF, changeFirstValuteName,
+                                    setDataF, dataF, lastValuteF, setLastValuteF)}
+                                placeholder={placeholder} onClickBlock={firstBlockValueHandle} secondCourse={secondCourse}
+                                firstCourse={firstCourse} firstCurrency={firstCurrency} secondCurrency={secondCurrency}
+                                value={Service.calcValueForInput(firstValue, firstBlockState,
+                                    Service.convertation(secondValue, secondCourse, firstCourse)
+                )}
+                />
                 <div className={classes.logoDiv} onClick={swap}>
                     <img src={require('../../152360.png')} alt='swap' className={classes.logoCl}/>
                 </div>
-                <div className={classes.secondCurrency}>
-                    <Select data={data} fullData={fullData} select={selectHandlerSecond} activeValute={secondCurrency}
-                            lastSelect={selectLast(setActiveS, activeS)}/>
+                <ConverterBlock name={currencyClassS}  fullData={fullData} data={dataS}
+                select={selectHandlerSecond} activeValute={secondCurrency} openModal={openModal(setActiveS, activeS)}
+                active={activeS} lastSelect={lastSelect(setActiveS, activeS, changeSecondValuteName,
+                    setDataS, dataS, lastValuteS, setLastValuteS)} placeholder={placeholder}
+                                onClickBlock={secondBlockValueHandle} value={Service.calcValueForInput(secondValue,
+                                        secondBlockState, Service.convertation(firstValue, firstCourse, secondCourse))}
+                firstCourse={secondCourse} secondCourse={firstCourse} firstCurrency={secondCurrency}
+                                secondCurrency={firstCurrency}
+                />
+                {/*<div className={currencyClassS}>
+                    <Select data={dataS}
+                            fullData={fullData}
+                            select={selectHandlerSecond}
+                            activeValute={secondCurrency}
+                            openModal={openModal(setActiveS, activeS)}/>
                     {activeS ?
-                        <Modal active={activeS} fullData={fullData} select={selectLast}/>
+                        <Modal fullData={fullData}
+                               lastSelect={lastSelect(setActiveS, activeS, changeSecondValuteName,
+                                   setDataS, dataS, lastValuteS, setLastValuteS)}
+                               />
                         :
                         <InputBlock placeholder={placeholder}
                                     onClick={secondBlockValueHandle}
@@ -147,7 +161,7 @@ const CurrencyForm = ({placeholder}) => {
                                     secondCourse={firstCourse}
                         />
                     }
-                </div>
+                </div>*/}
             </div>
         </form>
     );

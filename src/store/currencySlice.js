@@ -21,7 +21,6 @@ const initialState = {
         valueSecond: 0,
         searchStr: '',
         activePage: window.location.pathname,
-        lastValute: 'KZT'
     }
 }
 
@@ -50,9 +49,6 @@ const currencySlice = createSlice({
         handleSecondValue(state, action){
             state.state.valueSecond = action.payload
         },
-        changeLastValute(state, action){
-            state.state.lastValute = action.payload
-        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchCurrency.pending, (state, action) =>{
@@ -69,5 +65,6 @@ const currencySlice = createSlice({
     }
 })
 
-export const {initCurrency, searchStrEdit, changeActive, changeFirstValuteName, changeSecondValuteName, handleFirstValue, handleSecondValue} = currencySlice.actions
+export const {searchStrEdit, changeActive, changeFirstValuteName, changeSecondValuteName,
+              handleFirstValue, handleSecondValue} = currencySlice.actions
 export default currencySlice.reducer
