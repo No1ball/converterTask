@@ -23,7 +23,6 @@ const CurrencyForm = ({placeholder}) => {
     const [activeS, setActiveS] = useState(false)
     const [lastValuteF, setLastValuteF] = useState('KZT')
     const [lastValuteS, setLastValuteS] = useState('KZT')
-    console.log(status)
     useEffect( () => {
         setDataF([...dataF, {CharCode:lastValuteF}])
         setDataS([...dataS, {CharCode:lastValuteS}])
@@ -32,7 +31,6 @@ const CurrencyForm = ({placeholder}) => {
         const firstFiltredObj = fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0]
         const secondFiltredObj = fullData.filter(item => item.CharCode.localeCompare(secondCurrency) === 0)[0]
         if(fullData.length > 1){
-            console.log(fullData.filter(item => item.CharCode.localeCompare(firstCurrency) === 0)[0].Value)
             setFirstCourse(firstFiltredObj.Value / firstFiltredObj.Nominal);
             setSecondCourse(secondFiltredObj.Value / secondFiltredObj.Nominal);
             dispatch(handleSecondValue(Service.convertation(firstValue,
@@ -87,8 +85,6 @@ const CurrencyForm = ({placeholder}) => {
             setDataF([...dataF.filter(item => item.CharCode.localeCompare(lastValuteF) !== 0),
                 {CharCode: secondCurrency}])
             setLastValuteF(secondCurrency)
-
-
             if(firstCurrency === lastValuteF) {
                 setDataS([...dataS.filter(item => item.CharCode.localeCompare(lastValuteS) !== 0),
                     {CharCode: tempLast}])
@@ -106,8 +102,6 @@ const CurrencyForm = ({placeholder}) => {
         dispatch(handleFirstValue(secondValue))
         setFirstBlockState(true)
         setSecondBlockState(false)
-        console.log(firstCurrency, lastValuteF, secondCurrency, lastValuteS)
-
     }
 
     const openModal = (setActive, active) => (event) => setActive(!active)
